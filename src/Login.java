@@ -5,7 +5,6 @@ import java.awt.event.*;
 public class Login extends JFrame implements ActionListener{
 
     JButton rules, back;
-    JTextField tfname;
 
     Login() {
         getContentPane().setBackground(Color.WHITE);
@@ -16,47 +15,43 @@ public class Login extends JFrame implements ActionListener{
 //        image.setBounds(0, 0, 600, 500);
 //        add(image);
 
+        JLabel welcome = new JLabel("Hello, there... Welcome to");
+        welcome.setBounds(260, 120, 500, 45);
+        welcome.setFont(new Font("Viner Hand ITC", Font.BOLD, 24));
+        welcome.setForeground(new Color(16, 16, 16));
+        add(welcome);
+
         JLabel heading = new JLabel("Knowledge Knockout");
-        heading.setBounds(150, 60, 500, 45);
+        heading.setBounds(200, 160, 500, 45);
         heading.setFont(new Font("Viner Hand ITC", Font.BOLD, 40));
         heading.setForeground(new Color(30, 144, 254));
         add(heading);
 
-        JLabel name = new JLabel("Enter your name");
-        name.setBounds(810, 150, 500, 20);
-        name.setFont(new Font("Arial", Font.BOLD, 18));
-        name.setForeground(new Color(30, 144, 254));
-        add(name);
-
-        tfname = new JTextField();
-        tfname.setBounds(735, 200, 300, 25);
-        tfname.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        add(tfname);
-
-        rules = new JButton("Rules");
-        rules.setBounds(735, 270, 120, 25);
+        rules = new JButton("Start");
+        rules.setBounds(220, 480, 120, 40);
         rules.setBackground(new Color(30, 144, 254));
         rules.setForeground(Color.WHITE);
+        rules.setFont(new Font("Tahoma", Font.PLAIN, 20));
         rules.addActionListener(this);
         add(rules);
 
-        back = new JButton("Back");
-        back.setBounds(915, 270, 120, 25);
-        back.setBackground(new Color(30, 144, 254));
+        back = new JButton("Close");
+        back.setBounds(480, 480, 120, 40);
+        back.setBackground(new Color(255, 15, 70));
         back.setForeground(Color.WHITE);
+        back.setFont(new Font("Tahoma", Font.PLAIN, 20));
         back.addActionListener(this);
         add(back);
 
-        setSize(1200, 500);
-        setLocation(200, 150);
+        setSize(820, 680);
+        setLocation(360, 60);
         setVisible(true);
     }
 
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == rules) {
-            String name = tfname.getText();
             setVisible(false);
-            new Rules(name);
+            new Rules();
         } else if (ae.getSource() == back) {
             setVisible(false);
         }
