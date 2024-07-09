@@ -5,6 +5,7 @@ import java.awt.event.*;
 public class Rules extends JFrame implements ActionListener{
 
     JButton start, back;
+    JTextField topic;
 
     Rules() {
         getContentPane().setBackground(Color.WHITE);
@@ -27,6 +28,18 @@ public class Rules extends JFrame implements ActionListener{
                         "<html>"
         );
         add(rules);
+
+        JLabel enterTopic = new JLabel("Enter topic name:");
+        enterTopic.setBounds(80, 400, 300, 40);
+        enterTopic.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        enterTopic.setForeground(new Color(0, 0, 0));
+        add(enterTopic);
+
+        topic = new JTextField();
+        topic.setBounds(280, 404, 430, 36);
+        topic.setText("Java");
+        topic.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        add(topic);
 
         start = new JButton("Start");
         start.setBounds(280, 500, 100, 40);
@@ -52,7 +65,7 @@ public class Rules extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == start) {
             setVisible(false);
-            new Quiz();
+            new Quiz(topic.getText());
         } else {
             setVisible(false);
             new Login();

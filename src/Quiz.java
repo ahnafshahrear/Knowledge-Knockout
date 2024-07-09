@@ -15,17 +15,19 @@ public class Quiz extends JFrame implements ActionListener {
     public static int score = 0;
     public static int no = 1;
 
+    Questions questionsSet;
     String[][] questions;
     String[][] answers;
     String[][] userAnswer = new String[100][1];
 
-    Quiz() {
+    Quiz(String topic) {
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 
-        JavaQuestions javaQuestions = new JavaQuestions();
-        questions = javaQuestions.getQuestions();
-        answers = javaQuestions.getAnswers();
+        QuestionsFactory questionsFactory = new QuestionsFactory();
+        questionsSet = questionsFactory.getQuestions(topic);
+        questions = questionsSet.getQuestions();
+        answers = questionsSet.getAnswers();
 
         questionNo = new JLabel();
         questionNo.setBounds(20, 20, 50, 30);
@@ -190,6 +192,6 @@ public class Quiz extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new Quiz();
+        new Quiz("Java");
     }
 }

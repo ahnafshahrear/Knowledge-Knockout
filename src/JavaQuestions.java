@@ -1,4 +1,4 @@
-public class JavaQuestions {
+public class JavaQuestions implements Questions {
     private String[][] questions;
     private String[][] answers;
 
